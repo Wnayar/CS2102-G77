@@ -1,6 +1,4 @@
-BEGIN;
-DROP TABLE IF EXISTS stg_menu, stg_registration, stg_staff, stg_order, cuisine, menu, registration, staff, staff_cuisine, total_order, order_details CASCADE;
-
+--Create staging tables
 CREATE TABLE stg_menu (
   item text,
   price text,
@@ -33,15 +31,8 @@ CREATE TABLE stg_order (
   phone text,
   firstname text,
   lastname text,
-  staff_id text,
-  lineno SERIAL
+  staff_id text
 );
-
--- Load CSVs (psql-only)
--- \copy stg_menu        FROM 'menu.csv'        WITH (FORMAT csv, HEADER true);
--- \copy stg_registration FROM 'registration.csv' WITH (FORMAT csv, HEADER true);
--- \copy stg_staff       FROM 'staff.csv'       WITH (FORMAT csv, HEADER true);
--- \copy stg_order       FROM 'order.csv'       WITH (FORMAT csv, HEADER true);
 
 -- Load CSVs using insert statements
 INSERT INTO stg_menu VALUES ('Rendang', '4', 'Indonesian');
@@ -242,7 +233,7 @@ INSERT INTO stg_registration VALUES ('2024-06-13', '17:04:59', '98563061', 'Tabb
 INSERT INTO stg_registration VALUES ('2024-06-13', '19:22:19', '89372994', 'Quentin', 'Sedgefield');
 INSERT INTO stg_registration VALUES ('2024-06-13', '20:45:01', '97397535', 'Celene', 'Belbin');
 INSERT INTO stg_registration VALUES ('2024-06-14', '18:29:53', '89536307', 'Sax', 'Jude');
-INSERT INTO stg_registration VALUES ('2024-06-15', '15:30:20', '91984698', 'D'arcy', 'Paynter');
+INSERT INTO stg_registration VALUES ('2024-06-15', '15:30:20', '91984698', 'D''arcy', 'Paynter');
 INSERT INTO stg_registration VALUES ('2024-06-15', '16:03:30', '87047759', 'Mellie', 'Grenshields');
 INSERT INTO stg_registration VALUES ('2024-06-15', '18:14:05', '85765335', 'Dana', 'Leuren');
 INSERT INTO stg_registration VALUES ('2024-06-16', '15:02:36', '94238623', 'Demetrius', 'Creebo');
@@ -717,7 +708,7 @@ INSERT INTO stg_registration VALUES ('2025-01-02', '14:41:11', '97288143', 'Kore
 INSERT INTO stg_registration VALUES ('2025-01-02', '16:22:32', '81431028', 'Ignacio', 'Andrzejowski');
 INSERT INTO stg_registration VALUES ('2025-01-03', '16:58:09', '88569701', 'Staci', 'Everwin');
 INSERT INTO stg_registration VALUES ('2025-01-04', '07:34:00', '83265688', 'Nataniel', 'Kibbye');
-INSERT INTO stg_registration VALUES ('2025-01-04', '09:59:28', '94673884', 'Pedro', 'O'Lunney');
+INSERT INTO stg_registration VALUES ('2025-01-04', '09:59:28', '94673884', 'Pedro', 'O''Lunney');
 INSERT INTO stg_registration VALUES ('2025-01-05', '10:53:01', '88958633', 'Dreddy', 'Ettritch');
 INSERT INTO stg_registration VALUES ('2025-01-09', '08:07:08', '84854376', 'Moselle', 'Esmonde');
 INSERT INTO stg_registration VALUES ('2025-01-09', '15:36:59', '82026031', 'Donielle', 'Jurgenson');
@@ -831,7 +822,7 @@ INSERT INTO stg_registration VALUES ('2025-02-20', '15:19:46', '97959304', 'Tabo
 INSERT INTO stg_registration VALUES ('2025-02-20', '16:59:07', '91948040', 'Loralee', 'Stapford');
 INSERT INTO stg_registration VALUES ('2025-02-20', '19:01:51', '83362165', 'Susann', 'Dooland');
 INSERT INTO stg_registration VALUES ('2025-02-20', '19:07:26', '93086562', 'Cobby', 'Jalland');
-INSERT INTO stg_registration VALUES ('2025-02-22', '03:24:14', '98917298', 'Alia', 'O'Flaherty');
+INSERT INTO stg_registration VALUES ('2025-02-22', '03:24:14', '98917298', 'Alia', 'O''Flaherty');
 INSERT INTO stg_registration VALUES ('2025-02-22', '11:28:30', '94184777', 'Sissie', 'Aubrun');
 INSERT INTO stg_registration VALUES ('2025-02-23', '13:50:22', '87938110', 'Jonell', 'Jordin');
 INSERT INTO stg_registration VALUES ('2025-02-24', '09:45:11', '84955015', 'Trumann', 'Ranyell');
@@ -875,7 +866,7 @@ INSERT INTO stg_registration VALUES ('2025-03-19', '15:14:23', '92089746', 'Stan
 INSERT INTO stg_registration VALUES ('2025-03-19', '17:00:00', '91425089', 'Adiana', 'Belderfield');
 INSERT INTO stg_registration VALUES ('2025-03-20', '08:13:16', '93564742', 'Andriana', 'Writtle');
 INSERT INTO stg_registration VALUES ('2025-03-20', '10:06:44', '95734883', 'Gram', 'Braddock');
-INSERT INTO stg_registration VALUES ('2025-03-20', '12:48:24', '93912232', 'Tobey', 'M'Quhan');
+INSERT INTO stg_registration VALUES ('2025-03-20', '12:48:24', '93912232', 'Tobey', 'M''Quhan');
 INSERT INTO stg_registration VALUES ('2025-03-20', '14:26:47', '89313518', 'Thornie', 'Loughran');
 INSERT INTO stg_registration VALUES ('2025-03-20', '17:23:51', '84155657', 'Arv', 'Tomisch');
 INSERT INTO stg_registration VALUES ('2025-03-21', '15:09:03', '93989171', 'Matteo', 'Heijne');
@@ -1023,7 +1014,6 @@ INSERT INTO stg_order VALUES ('2024-03-08', '12:22:29', '20240308002', 'card', '
 INSERT INTO stg_order VALUES ('2024-03-08', '12:22:29', '20240308002', 'card', '5100-1476-0010-6766', 'mastercard', 'Palak Paneer', '14', '87547836', 'Flynn', 'Massot', 'STAFF-06');
 INSERT INTO stg_order VALUES ('2024-03-08', '13:53:02', '20240308003', 'card', '3746-2267-7977-3800', 'americanexpress', 'Gudeg', '3', '', '', '', 'STAFF-07');
 
-
 -- populate cuisine table with distinct values 
 INSERT INTO cuisine (cuisine_name)
 SELECT DISTINCT cuisine
@@ -1056,27 +1046,18 @@ FROM stg_staff;
 INSERT INTO total_order (order_id, order_date, order_time,
     payment, card_number, card_type, total_price,
     member_phone)
-SELECT DISTINCT ON (s.order_id) 
-    s.order_id, s.ord_date::DATE, s.ord_time::TIME, 
-    s.payment, NULLIF(s.card_number, ''), NULLIF(s.card_type, ''), 
-    s.total_price::NUMERIC(8,2), NULLIF(s.phone, '')
-FROM (
-    SELECT *, ROW_NUMBER() OVER () AS lineno
-    FROM stg_order
-) AS s
-WHERE s.lineno <= 100
-ORDER BY s.order_id, s.lineno;
+SELECT DISTINCT ON (order_id) 
+    order_id, ord_date::DATE, ord_time::TIME, 
+    payment, NULLIF(card_number, ''), NULLIF(card_type, ''), 
+    total_price::NUMERIC(8,2), NULLIF(phone, '')
+FROM stg_order
+ORDER BY order_id;
 
 -- populate order_details (first 100 rows of order.csv)
 INSERT INTO order_details (item_name, staff_id, parent_order_id, quantity)
-SELECT s.item, s.staff_id, s.order_id, COUNT(*)::int
-FROM (
-    SELECT *, ROW_NUMBER() OVER () AS lineno
-    FROM stg_order
-) AS s
-WHERE s.lineno <= 100
-GROUP BY s.order_id, s.item, s.staff_id;
-
+SELECT item, staff_id, order_id, COUNT(*)::int
+FROM stg_order
+GROUP BY order_id, item, staff_id;
 
 -- drop staging tables 
 DROP TABLE stg_menu;

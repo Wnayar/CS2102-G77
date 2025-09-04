@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS stg_menu, stg_registration, stg_staff, stg_order, cuisine, menu, registration, staff, staff_cuisine, total_order, order_details CASCADE;
