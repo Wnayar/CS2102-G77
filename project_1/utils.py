@@ -1,17 +1,5 @@
 import csv
 
-# def read_csv(csvfilename):
-#   """
-#   Read .csv file.
-#   - file: the .csv file with the full path
-#   """
-#   rows = []
-#   with open(csvfilename, encoding='utf-8') as csvfile:
-#     file_reader = csv.reader(csvfile)
-#     for row in file_reader:
-#       rows.append(row)
-#   return rows
-
 def read_csv(csvfilename, limit=None):
     """
     Read .csv file.
@@ -28,9 +16,14 @@ def read_csv(csvfilename, limit=None):
                 break
             rows.append(row)
             count += 1
-
     return rows
 
-def generate_insert_statements(table_name, limit=None):
+def generate_insert_statements(table_name, TABLE_MAP_STAGING, limit=None):
   for row in read_csv(table_name, limit)[1:]:
-    print(f"""INSERT INTO table VALUE ('{"', '".join(row)}');""")
+    # map table name to staging table name
+    # stg_menu to 'menu.csv'        
+    # stg_registration to 'registration.csv'
+    # stg_staff to 'staff.csv'    
+    # stg_order to 'order.csv'  
+    staging_table_name =  TABLE_MAP_STAGING.get(table_name)
+    print(f"""INSERT INTO {staging_table_name} VALUES ('{"', '".join(row)}');""")
