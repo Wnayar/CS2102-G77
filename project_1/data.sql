@@ -34,7 +34,7 @@ CREATE TABLE stg_order (
   firstname text,
   lastname text,
   staff_id text,
-  lineno BIGSERIAL
+  lineno SERIAL
 );
 
 -- Load CSVs (psql-only)
