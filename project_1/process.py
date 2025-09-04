@@ -1,7 +1,7 @@
 from utils import generate_insert_statements
 
 # from command line run
-#python menu_process.py >> insert_statements.txt
+# python menu_process.py >> insert_statements.txt
 
 ORDER_LIMIT_ROWS = 100
 GIVEN_TABLES = ['menu.csv', 'registration.csv', 'staff.csv', 'order.csv']
