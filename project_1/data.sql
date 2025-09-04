@@ -33,7 +33,8 @@ CREATE TABLE stg_order (
   phone text,
   firstname text,
   lastname text,
-  staff_id text
+  staff_id text,
+  lineno BIGSERIAL
 );
 
 -- Load CSVs (psql-only)
