@@ -42,6 +42,8 @@ CREATE TABLE stg_order (
 \copy stg_registration FROM 'registration.csv' WITH (FORMAT csv, HEADER true);
 \copy stg_staff       FROM 'staff.csv'       WITH (FORMAT csv, HEADER true);
 \copy stg_order       FROM 'order.csv'       WITH (FORMAT csv, HEADER true);
+
+
 -- populate cuisine table with distinct values 
 INSERT INTO cuisine (cuisine_name)
 SELECT DISTINCT cuisine
